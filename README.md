@@ -37,14 +37,19 @@ pituitary
 ```
 
 ---
-
 ## Dataset
 
-The main experiment in the published paper uses the public Kaggle Brain Tumor MRI dataset:
+The published study evaluates HayabusaNet using three public brain MRI datasets.
+
+### 1. Kaggle Brain Tumor MRI Dataset
+
+The main multiclass experiment uses the public Kaggle Brain Tumor MRI dataset:
 
 - **Dataset:** Brain Tumor MRI Dataset
 - **Source:** Nickparvar, M. (2021)
 - **Kaggle DOI:** https://doi.org/10.34740/KAGGLE/DSV/2645886
+- **Task:** Four-class brain tumor MRI classification
+- **Classes:** glioma, meningioma, notumor, and pituitary
 
 The dataset contains four classes:
 
@@ -53,6 +58,52 @@ glioma
 meningioma
 notumor
 pituitary
+```
+
+### 2. BRISC Dataset
+
+The cross-dataset evaluation uses the BRISC dataset:
+
+- **Dataset:** BRISC: Annotated dataset for brain tumor segmentation and classification
+- **Source:** Fateh et al. (2026)
+- **DOI:** https://doi.org/10.1038/s41597-026-06753-y
+- **Task:** Four-class brain tumor MRI classification
+- **Classes:** glioma, meningioma, notumor, and pituitary
+- **Dataset size:** 6,000 MRI images
+- **Original split:** 5,000 training images and 1,000 test images
+
+In the published paper, HayabusaNet was trained on the Kaggle Brain Tumor MRI dataset and tested on the independent BRISC test set to assess cross-dataset generalization.
+
+### 3. Br35H Dataset
+
+The additional binary evaluation uses the Br35H dataset:
+
+- **Dataset:** Br35H: Brain Tumor Detection
+- **Source:** Hamada, A. (2020)
+- **Kaggle URL:** https://www.kaggle.com/datasets/ahmedhamada0/brain-tumor-detection
+- **Task:** Binary brain tumor MRI classification
+- **Classes:** No and Yes
+- **Dataset size:** 3,000 MRI images
+- **Class distribution:** 1,500 images per class
+
+In the published paper, Br35H was evaluated using 5-fold cross-validation. Since this dataset is class-balanced, data augmentation was not applied in that evaluation.
+
+### Expected Folder Format
+
+Before running the notebook, organize the images as follows:
+
+```text
+dataset/
+├── train/
+│   ├── glioma/
+│   ├── meningioma/
+│   ├── notumor/
+│   └── pituitary/
+└── validation/
+    ├── glioma/
+    ├── meningioma/
+    ├── notumor/
+    └── pituitary/
 ```
 
 The notebook assumes that the dataset has already been prepared and arranged in directory-based class folders.
